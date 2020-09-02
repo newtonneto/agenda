@@ -2,17 +2,18 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>Contatos</title>
+        <title>Contacts</title>
     </head>
     <body>
-        <h2>Novo Contato</h2>
+        <h2>New Contact</h2>
         <form action="{% url 'contatos:save_contact' %}" method="POST">
             {% csrf_token %}
-            <label>Nome: </label>
+            <label>Name: </label>
             <input type="text" name="name" required />
             <br/>
-            <label>Telefone: </label>
-            <input type="text" name="phone" required />
+            <label>Phone: </label>
+            <!--input type="tel" pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' name="phone" required /-->
+            <input type="tel" pattern="\d{11}" name="phone" required />
             <br/>
             <label>Email: </label>
             <input type="email" name="email" required />

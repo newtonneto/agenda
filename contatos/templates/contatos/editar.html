@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Contacts</title>
+    </head>
+    <body>
+        <h2>Edit Contact</h2>
+        <form action="{% url 'contatos:save_edit_contact' id %}" method="POST">
+            {% csrf_token %}
+            <label>Name: </label>
+            <input type="text" name="name" value="{{ contact.name }}" required />
+            <br/>
+            <label>Phone: </label>
+            <!--input type="tel" pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' name="phone" required /-->
+            <input type="tel" pattern="\d{11}" name="phone" value="{{ contact.phone }}" required />
+            <br/>
+            <label>Email: </label>
+            <input type="email" name="email" value="{{ contact.email }}" required />
+            <br/>
+            <input type="submit" value="Cadastrar" />
+        </form>
+        <br/>
+        <a href="{% url 'contatos:index' %}">Home</a>
+    </body>
+</html>
