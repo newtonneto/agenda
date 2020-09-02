@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Contacts</title>
+    </head>
+    <body>
+        <a href="{% url 'contatos:new_contact' %}">New Contact</a>
+        <h2>Contact List</h2>
+        {% if contact_list %}
+            {% for contact in contact_list %}
+                <label>{{ contact.name }}</label>
+                <label>{{ contact.phone }}</label>
+                <label>{{ contact.email }}</label>
+                <a href="{% url 'contatos:edit_contact' %}">Edit</a>
+                <a href="{% url 'contatos:remove_contact' %}">Delete</a>
+                <br/>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>

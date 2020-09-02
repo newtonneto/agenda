@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Contatos</title>
+    </head>
+    <body>
+        <h2>Novo Contato</h2>
+        <form action="{% url 'contatos:save_contact' %}" method="POST">
+            {% csrf_token %}
+            <label>Nome: </label>
+            <input type="text" name="name" required />
+            <br/>
+            <label>Telefone: </label>
+            <input type="text" name="phone" required />
+            <br/>
+            <label>Email: </label>
+            <input type="email" name="email" required />
+            <br/>
+            <input type="submit" value="Cadastrar" />
+        </form>
+        <br/>
+        <a href="{% url 'contatos:index' %}">Home</a>
+    </body>
+</html>
