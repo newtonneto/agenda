@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <!--link href="{% static 'css/main.css' %}" rel="stylesheet"-->
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
         <title>Contacts</title>
     </head>
     <body>
@@ -28,16 +28,16 @@
                 {% if contact_list %}
                 {% for contact in contact_list %}
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm vsync">
                             <label>{{ forloop.counter }} - {{ contact.name }}</label>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm vsync">
                             <label>{{ contact.phone }}</label>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm vsync">
                             <label>{{ contact.email }}</label>
                         </div>
-                        <div class="col-">
+                        <div class="col-sm">
                             <a href="{% url 'contatos:edit_contact' forloop.counter0 %}" class="btn btn-warning">Edit</a>
                             <a href="{% url 'contatos:remove_contact' forloop.counter0 %}" class="btn btn-danger">Delete</a>
                         </div>
