@@ -4,7 +4,7 @@
  - PIP 20.2.2
  
  # Instalação
- - pip install -r requeriments/req.txt
+ - pip install -r requeriments.txt
  
  # Execução
   Acesso o diretorio do projeto e execute o comando a seguir:
