@@ -7,7 +7,7 @@ from .contact import Contact
 # Create your views here.
 def index(request):
     #Verifica se existe dados salvos na session
-    if not request.session['contact_list']:
+    if not request.session.get('contact_list'):
         request.session['contact_list'] = []
 
     context = {
@@ -30,7 +30,6 @@ def save_contact(request):
         'email': email,
     }
 
-    #print(contact)
     contact_list = request.session['contact_list']
     contact_list.append(contact)
     request.session['contact_list'] = contact_list

@@ -15,37 +15,37 @@
             </div>
             {% endfor %}
         {% endif %}
-
-        {% if contact_list %}
-            <div class="d-flex justify-content-center">
-                <div class="container">
-                    <br/>
-                    <div class="d-flex justify-content-start">
-                        <a href="{% url 'contatos:new_contact' %}" class="btn btn-primary" >New Contact</a>
-                    </div>
-                    <br/>
-                    <h2>Contact List</h2>
-                    <br/>
-                    {% for contact in contact_list %}
-                        <div class="row">
-                            <div class="col-sm">
-                                <label>{{ forloop.counter }} - {{ contact.name }}</label>
-                            </div>
-                            <div class="col-sm">
-                                <label>{{ contact.phone }}</label>
-                            </div>
-                            <div class="col-sm">
-                                <label>{{ contact.email }}</label>
-                            </div>
-                            <div class="col-">
-                                <a href="{% url 'contatos:edit_contact' forloop.counter0 %}" class="btn btn-warning">Edit</a>
-                                <a href="{% url 'contatos:remove_contact' forloop.counter0 %}" class="btn btn-danger">Delete</a>
-                            </div>
-                        </div>
-                        <hr/>
-                    {% endfor %}
+        
+        <div class="d-flex justify-content-center">
+            <div class="container">
+                <br/>
+                <div class="d-flex justify-content-start">
+                    <a href="{% url 'contatos:new_contact' %}" class="btn btn-primary" >New Contact</a>
                 </div>
+                <br/>
+                <h2>Contact List</h2>
+                <br/>
+                {% if contact_list %}
+                {% for contact in contact_list %}
+                    <div class="row">
+                        <div class="col-sm">
+                            <label>{{ forloop.counter }} - {{ contact.name }}</label>
+                        </div>
+                        <div class="col-sm">
+                            <label>{{ contact.phone }}</label>
+                        </div>
+                        <div class="col-sm">
+                            <label>{{ contact.email }}</label>
+                        </div>
+                        <div class="col-">
+                            <a href="{% url 'contatos:edit_contact' forloop.counter0 %}" class="btn btn-warning">Edit</a>
+                            <a href="{% url 'contatos:remove_contact' forloop.counter0 %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                    <hr/>
+                {% endfor %}
+                {% endif %}
             </div>
-        {% endif %}
+        </div>
     </body>
 </html>
