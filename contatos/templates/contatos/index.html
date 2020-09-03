@@ -1,47 +1,51 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <!--link href="{% static 'css/main.css' %}" rel="stylesheet"-->
         <title>Contacts</title>
     </head>
     <body>
-        <a href="{% url 'contatos:new_contact' %}">New Contact</a>
-        <h2>Contact List</h2>
-        {% if contact_list %}
-            <div class="container">
-            {% for contact in contact_list %}
-                <div class="row">
-                    <div class="col-sm">
-                        <label>{{ forloop.counter }} - {{ contact.name }}</label>
-                    </div>
-                    <div class="col-sm">
-                        <label>{{ contact.phone }}</label>
-                    </div>
-                    <div class="col-sm">
-                        <label>{{ contact.email }}</label>
-                    </div>
-                    <div class="col-sm">
-                        <a href="{% url 'contatos:edit_contact' forloop.counter0 %}">Edit</a>
-                        <a href="{% url 'contatos:remove_contact' forloop.counter0 %}">Delete</a>
-                    </div>
-                </div>
-            {% endfor %}
+        {%if messages%}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} text-center" id="success-alert" role="alert">
+                {{message}}
             </div>
+            {% endfor %}
         {% endif %}
 
-        <div class="container">
-            <div class="row">
-              <div class="col-sm">
-                One of three columns
-              </div>
-              <div class="col-sm">
-                One of three columns
-              </div>
-              <div class="col-sm">
-                One of three columns
-              </div>
+        {% if contact_list %}
+            <div class="d-flex justify-content-center">
+                <div class="container">
+                    <br/>
+                    <div class="d-flex justify-content-start">
+                        <a href="{% url 'contatos:new_contact' %}" class="btn btn-primary" >New Contact</a>
+                    </div>
+                    <br/>
+                    <h2>Contact List</h2>
+                    <br/>
+                    {% for contact in contact_list %}
+                        <div class="row">
+                            <div class="col-sm">
+                                <label>{{ forloop.counter }} - {{ contact.name }}</label>
+                            </div>
+                            <div class="col-sm">
+                                <label>{{ contact.phone }}</label>
+                            </div>
+                            <div class="col-sm">
+                                <label>{{ contact.email }}</label>
+                            </div>
+                            <div class="col-">
+                                <a href="{% url 'contatos:edit_contact' forloop.counter0 %}" class="btn btn-warning">Edit</a>
+                                <a href="{% url 'contatos:remove_contact' forloop.counter0 %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                        <hr/>
+                    {% endfor %}
+                </div>
             </div>
-          </div>
+        {% endif %}
     </body>
 </html>
